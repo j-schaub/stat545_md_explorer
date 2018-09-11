@@ -1,7 +1,7 @@
 # STAT 545: Participation
 
-A repository for exploring version control and Markdown
+A repository for submitting in-class activities for participation marks
 
-This repo is part of a STAT 545 exercise to explore GitHub and markdown.
+This repo is organized in the following way:
 
-Starting the new branch (test 1)
+
