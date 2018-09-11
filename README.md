@@ -1,4 +1,4 @@
-# STAT 545: Markdown Explorer
+# STAT 545: Participation
 
 A repository for exploring version control and Markdown
 
