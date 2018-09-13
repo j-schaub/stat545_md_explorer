@@ -2,6 +2,4 @@
 
 A repository for submitting in-class activities for participation marks
 
-This repo is organized in the following way:
-
-
+This line was added locally.
