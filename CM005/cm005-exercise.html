@@ -2116,6 +2116,29 @@ if (my_commute &gt; 30) {
 <li>Find all entries of Canada, and entries of Algeria occuring in the ’60s.</li>
 <li><p>Find all entries <em>not</em> including Canada and Algeria.</p></li>
 </ol>
+<pre class="r"><code># Canada and Algeria during the 60's
+filter(gapminder, (country == 'Canada' | country == 'Algeria') &amp; year &gt;= 1960 &amp; year &lt; 1970)</code></pre>
+<pre><code>## # A tibble: 4 x 6
+##   country continent  year lifeExp      pop gdpPercap
+##   &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+## 1 Algeria Africa     1962    48.3 11000948     2551.
+## 2 Algeria Africa     1967    51.4 12760499     3247.
+## 3 Canada  Americas   1962    71.3 18985849    13462.
+## 4 Canada  Americas   1967    72.1 20819767    16077.</code></pre>
+<pre class="r"><code> #Or 
+gapminder %&gt;% 
+  filter(country %in% c('Canada', 'Algeria'), 
+         year &gt;= 1960, 
+         year &lt; 1970)</code></pre>
+<pre><code>## # A tibble: 4 x 6
+##   country continent  year lifeExp      pop gdpPercap
+##   &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+## 1 Algeria Africa     1962    48.3 11000948     2551.
+## 2 Algeria Africa     1967    51.4 12760499     3247.
+## 3 Canada  Americas   1962    71.3 18985849    13462.
+## 4 Canada  Americas   1967    72.1 20819767    16077.</code></pre>
+<pre class="r"><code># %in% goes through all countries and determines whether its in the vector
+# , == &amp; in filter()</code></pre>
 </div>
 <div id="bonus-exercises" class="section level1">
 <h1>Bonus Exercises</h1>
