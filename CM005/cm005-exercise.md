@@ -1962,25 +1962,59 @@ Note: think of `%>%` as the word "then"!
 
 
 ```r
-select(gapminder, year, lifeExp, continent) %>% 
+select(gapminder, year, lifeExp, country) %>% 
   arrange(year, lifeExp)
 ```
 
 ```
 ## # A tibble: 1,704 x 3
-##     year lifeExp continent
-##    <int>   <dbl> <fct>    
-##  1  1952    28.8 Asia     
-##  2  1952    30   Africa   
-##  3  1952    30.0 Africa   
-##  4  1952    30.3 Africa   
-##  5  1952    31.3 Africa   
-##  6  1952    32.0 Africa   
-##  7  1952    32.5 Africa   
-##  8  1952    32.5 Asia     
-##  9  1952    33.0 Africa   
-## 10  1952    33.6 Africa   
+##     year lifeExp country      
+##    <int>   <dbl> <fct>        
+##  1  1952    28.8 Afghanistan  
+##  2  1952    30   Gambia       
+##  3  1952    30.0 Angola       
+##  4  1952    30.3 Sierra Leone 
+##  5  1952    31.3 Mozambique   
+##  6  1952    32.0 Burkina Faso 
+##  7  1952    32.5 Guinea-Bissau
+##  8  1952    32.5 Yemen, Rep.  
+##  9  1952    33.0 Somalia      
+## 10  1952    33.6 Guinea       
 ## # ... with 1,694 more rows
+```
+
+```r
+#Or
+
+gapminder %>% 
+  select(year, lifeExp, country) %>% 
+  arrange(year, lifeExp)
+```
+
+```
+## # A tibble: 1,704 x 3
+##     year lifeExp country      
+##    <int>   <dbl> <fct>        
+##  1  1952    28.8 Afghanistan  
+##  2  1952    30   Gambia       
+##  3  1952    30.0 Angola       
+##  4  1952    30.3 Sierra Leone 
+##  5  1952    31.3 Mozambique   
+##  6  1952    32.0 Burkina Faso 
+##  7  1952    32.5 Guinea-Bissau
+##  8  1952    32.5 Yemen, Rep.  
+##  9  1952    33.0 Somalia      
+## 10  1952    33.6 Guinea       
+## # ... with 1,694 more rows
+```
+
+```r
+## When you pipe, it takes the output and automatically puts it as 
+## the first argument (usually where the data goes)
+## To override this, use . to specify where the output goes
+## ex. gapminder %>% 
+##        data.frame(3,.) 
+## will create a data frame with 3 first, then gapminder
 ```
 
 

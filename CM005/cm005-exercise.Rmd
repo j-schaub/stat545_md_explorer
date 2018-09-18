@@ -84,8 +84,21 @@ Note: think of `%>%` as the word "then"!
 1. Combine `select()` Task 1 with `arrange()` Task 3.
 
 ```{r}
-select(gapminder, year, lifeExp, continent) %>% 
+select(gapminder, year, lifeExp, country) %>% 
   arrange(year, lifeExp)
+
+#Or
+
+gapminder %>% 
+  select(year, lifeExp, country) %>% 
+  arrange(year, lifeExp)
+
+## When you pipe, it takes the output and automatically puts it as 
+## the first argument (usually where the data goes)
+## To override this, use . to specify where the output goes
+## ex. gapminder %>% 
+##        data.frame(3,.) 
+## will create a data frame with 3 first, then gapminder
 
 ```
 
