@@ -1,7 +1,8 @@
 cm010 Exercises
 ================
 
-\#\# Install `nycflights13` package
+Install `nycflights13` package
+------------------------------
 
 ``` r
 install.packages("nycflights13")
@@ -411,10 +412,10 @@ union(y,z)
     ## # A tibble: 4 x 2
     ##   x1       x2
     ##   <chr> <int>
-    ## 1 A         1
-    ## 2 B         2
+    ## 1 C         3
+    ## 2 A         1
     ## 3 D         4
-    ## 4 C         3
+    ## 4 B         2
 
 ### example for `setdiff`: Rows that appear in `y` but not `z`. **Caution:** `setdiff` for `y` to `z` and `z` to `y` are different.
 
@@ -545,7 +546,9 @@ flights2 %>%
 ### 2. Can we apply `set` and `binding` funcions between `flights2` and `weather` datasets. Why and why not?
 
 ``` r
-# Yes we can , they have similar columns "year" and "time_hour"
+#union(flights2, weather) #cant because not all same 
+#bind_rows(flights2, weather) #will add but have a lot of NAs, nothing will line up
+#bind_cols(flights2, weather) #can't, different number of rows
 ```
 
 ### 3. Let's create a tibble `p` with "x1" and "x2" coulmns and have duplicated element in "x1" column. Create another tibble `q` with "x1" and "x3" columns. Then apply `left_join` function `p` to `q` and `q` to `p`.

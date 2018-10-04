@@ -3,7 +3,7 @@ title: "cm010 Exercises"
 output: github_document
 ---
   
-  ## Install `nycflights13` package
+## Install `nycflights13` package
   
 ```{r,eval=FALSE}
 install.packages("nycflights13")
@@ -251,7 +251,12 @@ flights2 %>%
 ### 2. Can we apply `set` and `binding` funcions between `flights2` and `weather` datasets. Why and why not?
 
 ```{r}
-# Yes we can , they have similar columns "year" and "time_hour"
+
+#union(flights2, weather) #cant because not all same 
+#bind_rows(flights2, weather) #will add but have a lot of NAs, nothing will line up
+#bind_cols(flights2, weather) #can't, different number of rows
+
+
 ```
 
 
