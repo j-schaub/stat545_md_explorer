@@ -268,10 +268,13 @@ Concatenating Factors
 We saw that `c()` doesn't work for concatenating. Modify the following code to use `fct_c()` from the `forcats` package:
 
 ``` r
-c(lotr1$Film, lotr2$Film)
+fct_c(lotr1$Film, lotr2$Film)
 ```
 
-    ## [1] 1 1 1 1 1 1
+    ## [1] The Fellowship Of The Ring The Fellowship Of The Ring
+    ## [3] The Fellowship Of The Ring The Return Of The King    
+    ## [5] The Return Of The King     The Return Of The King    
+    ## Levels: The Fellowship Of The Ring The Return Of The King
 
 Try binding by row `lotr1` and `lotr2`:
 
@@ -279,6 +282,38 @@ Try binding by row `lotr1` and `lotr2`:
 -   with `bind_rows()`
 
 Which one is more lenient? Which would you prefer?
+
+``` r
+rbind(lotr1, lotr2)
+```
+
+    ##                         Film   Race Female Male
+    ## 1 The Fellowship Of The Ring    Elf   1229  971
+    ## 2 The Fellowship Of The Ring Hobbit     14 3644
+    ## 3 The Fellowship Of The Ring    Man      0 1995
+    ## 4     The Return Of The King    Elf    183  510
+    ## 5     The Return Of The King Hobbit      2 2673
+    ## 6     The Return Of The King    Man    268 2459
+
+``` r
+bind_rows(lotr1, lotr2)
+```
+
+    ## Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character
+
+    ## Warning in bind_rows_(x, .id): binding character and factor vector,
+    ## coercing into character vector
+
+    ## Warning in bind_rows_(x, .id): binding character and factor vector,
+    ## coercing into character vector
+
+    ##                         Film   Race Female Male
+    ## 1 The Fellowship Of The Ring    Elf   1229  971
+    ## 2 The Fellowship Of The Ring Hobbit     14 3644
+    ## 3 The Fellowship Of The Ring    Man      0 1995
+    ## 4     The Return Of The King    Elf    183  510
+    ## 5     The Return Of The King Hobbit      2 2673
+    ## 6     The Return Of The King    Man    268 2459
 
 Unused Levels
 -------------
@@ -304,6 +339,14 @@ gap_small <- gapminder %>%
 ```
 
 Exercise: Make a bar chart of the number of times a continent has a country with population &lt; 250,000 in the `gapminder` data set. Try with and without `scale_x_discrete(drop=FALSE)`.
+
+``` r
+ggplot(gap_small, aes(continent)) +
+  geom_bar() +
+  scale_x_discrete(drop=FALSE)
+```
+
+![](cm012-exercise_files/figure-markdown_github/unnamed-chunk-12-1.png)
 
 **Example of when it's bad**: If you ever use the `levels()` function.
 
