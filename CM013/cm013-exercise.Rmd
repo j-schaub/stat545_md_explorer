@@ -5,8 +5,11 @@ output: github_document
 
 ```{r}
 suppressPackageStartupMessages(library(tidyverse))
-library(gapminder)
-library(cowplot)
+suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(cowplot))
+suppressPackageStartupMessages(library(plotly))
+suppressPackageStartupMessages(library(scales))
+suppressPackageStartupMessages(library(listviewer))
 ```
 
 
@@ -59,7 +62,6 @@ p_scales +
     - Change the colour labels to comma format (use `scales::comma_format()`)
 
 ```{r}
-library(scales)
 p_scales +
     scale_x_log10(labels=dollar_format()) +
     scale_colour_continuous(
@@ -160,7 +162,7 @@ Consider the following plot:
 1. Convert it to a `plotly` object by applying the `ggplotly()` function:
 
 ```{r}
-library(plotly)
+
 ggplotly(p)
 
 #ggsave wont work with plotly
@@ -175,7 +177,7 @@ ggplotly(p)
 ```{r}
 p %>% 
     ggplotly() %>% 
-    htmlwidgets::saveWidget("LOCATION_GOES_HERE")
+    htmlwidgets::saveWidget("plotly.html")
 ```
 
 
@@ -207,7 +209,7 @@ plot_ly(gapminder,
 plot_ly(gapminder, 
         x = ~gdpPercap, 
         y = ~lifeExp, 
-        z = FILL_THIS_IN,
+        z = ~pop,
         type = "scatter3d",
         mode = "markers",
         opacity = 0.2)
